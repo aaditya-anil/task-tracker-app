@@ -12,7 +12,7 @@ A simple and clean Todo List web application built using React. This app lets us
 
 ## 📸 Preview
 
-![App Preview](src/screenshots/image.png)
+![App Preview](screenshots/image.png)
 
 ## 🛠️ Built With
 
