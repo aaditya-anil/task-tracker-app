@@ -1,9 +1,11 @@
 import React from 'react'
 import TodoList from './Components/TodoList'
+import Navbar from './Components/Navbar'
 
 const App = () => {
   return (
-    <div>
+    <div className='page'>
+      <Navbar />
       <TodoList />
     </div>
   )
