@@ -11,7 +11,7 @@
 
 .ind-list{
     display: grid;
-    grid-template-columns: 1rem 10rem 2rem;
+    grid-template-columns: 1rem 10rem 2rem 2rem;
     gap: 1rem;
     justify-content: space-between;
     margin-top: 6px;
