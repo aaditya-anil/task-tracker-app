@@ -39,7 +39,7 @@ const TodoList = () => {
         </ul>
         <div className='buttons'>
         <button onClick={()=>handleAdd}>Add Item</button>
-        <button >Delete All Done Tasks</button>
+        <button className='delete'>Delete All Done Tasks</button>
         </div>
     </div>
   )
