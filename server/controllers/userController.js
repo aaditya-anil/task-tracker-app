@@ -29,12 +29,12 @@ export async function loginUser(req, res) {
 
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ message: "Invalid email or password" });
+            return res.status(400).json({ token: null , message: "Invalid email or password" });
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            return res.status(400).json({ message: "Invalid email or password" });
+            return res.status(400).json({ token: null ,message: "Invalid email or password" });
         }
         const token = jwt.sign({ id: user._id }, 'jwt_secret');
         res.status(200).json({ token, message: "Login successful" });
@@ -42,8 +42,8 @@ export async function loginUser(req, res) {
     } catch (error) {
         console.error("Error logging in user:", error);
         if (error instanceof JsonWebTokenError) {
-            return res.status(401).json({ message: "Invalid token" });
+            return res.status(401).json({ token: null , message: "Invalid token" });
         }
-        res.status(500).json({ message: "Internal server error" });
+        res.status(500).json({ token: null , message: "Internal server error" });
     }
 }
