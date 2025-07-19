@@ -28,6 +28,13 @@ const Login = () => {
       })
   }
 
+  if (loginState.token) {
+    localStorage.setItem('token', loginState.token);
+    localStorage.setItem('userId', loginState.userId);
+    window.location.href = '/'; 
+
+  }
+
   return (
     <div>
         <form className='login-form' autoComplete='off' onSubmit={handleLogin}>

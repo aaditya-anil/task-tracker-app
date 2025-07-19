@@ -4,8 +4,9 @@ import todoSchema from "../models/todoModel.js"
 export async function addTodo(req,res) {
     try{
         const newTodo = new todoSchema({
+            userId: req.body.userId,
             taskName : req.body.taskName,
-            isDone : req.body.isDone
+            isDone : req.body.isDone,
         })
         const savedTodo = await newTodo.save()
         res.status(200).json(savedTodo)
@@ -45,7 +46,8 @@ export async function deleteTodo(req,res){
 
 export async function getAllTodo(req,res){
     try{
-        const todoList = await todoSchema.find()
+        const userId = req.params.id; 
+        const todoList = await todoSchema.find({userId: userId});
         res.status(200).json(todoList)
     }
     catch(err){

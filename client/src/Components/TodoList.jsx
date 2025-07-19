@@ -8,13 +8,14 @@ const TodoList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllTodos())
+        localStorage.getItem('userId');
+        dispatch(getAllTodos(localStorage.getItem('userId')))
     }, []);
     
     const handleAdd = () => {
         const taskName = prompt("Enter task name");
         if (taskName) {
-        dispatch(addTodo({ taskName, isDone: false }));
+        dispatch(addTodo({ taskName, isDone: false, userId: localStorage.getItem('userId') }));
         }
     };
 
@@ -38,7 +39,7 @@ const TodoList = () => {
             ))}
         </ul>
         <div className='buttons'>
-        <button onClick={()=>handleAdd}>Add Item</button>
+        <button onClick={()=>handleAdd()}>Add Item</button>
         <button className='delete'>Delete All Done Tasks</button>
         </div>
     </div>

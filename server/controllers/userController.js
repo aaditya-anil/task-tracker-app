@@ -1,17 +1,18 @@
 import bcrypt from "bcryptjs";
 import User from "../models/userModel.js";
+import jwt from "jsonwebtoken";
 
 export async function registerUser(req, res) {
     try {
-        const {  email, password } = req.body;
+        const {  name, email, password } = req.body;
 
-        const existingUser = await User.findOne({ username });
+        const existingUser = await User.findOne({ email });
         if(existingUser){
             return res.status(400).json({ message: "User already exists" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ email: email, password: hashedPassword });
+        const newUser = new User({ name: name, email: email, password: hashedPassword });
 
         await newUser.save();
         const token = jwt.sign({ id: newUser._id }, 'jwt_secret');
@@ -37,7 +38,7 @@ export async function loginUser(req, res) {
             return res.status(400).json({ token: null ,message: "Invalid email or password" });
         }
         const token = jwt.sign({ id: user._id }, 'jwt_secret');
-        res.status(200).json({ token, message: "Login successful" });
+        res.status(200).json({ token, message: "Login successful", userId : user._id });
 
     } catch (error) {
         console.error("Error logging in user:", error);

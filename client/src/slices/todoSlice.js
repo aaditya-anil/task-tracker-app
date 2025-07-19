@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:4000/';
 
-export const getAllTodos = createAsyncThunk('todo/getAllTodos', async () => {
-  const res = await fetch(baseUrl + 'todo');
+export const getAllTodos = createAsyncThunk('todo/getAllTodos', async (id) => {
+  const res = await fetch(baseUrl + 'todo/'+ id);
   return await res.json();
 });
 

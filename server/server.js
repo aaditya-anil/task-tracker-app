@@ -17,7 +17,7 @@ app.listen(PORT, ()=> console.log("Backend Server Started: Listening on Port: " 
 app.post("/todo", addTodo)
 app.put("/todo/:id",editTodo)
 app.delete("/todo/:id",deleteTodo)
-app.get("/todo",getAllTodo)
+app.get("/todo/:id",getAllTodo)
 
 app.post("/register", registerUser)
 app.post("/login", loginUser)

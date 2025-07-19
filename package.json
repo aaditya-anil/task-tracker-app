@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "backend": "nodemon server/server.js",
-    "frontend": "vite --config client/vite.config.js",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend --debug\""
+    "dev:client": "vite --config client/vite.config.js",
+    "dev:server": "nodemon server/server.js",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
