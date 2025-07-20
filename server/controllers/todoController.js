@@ -55,6 +55,19 @@ export async function getAllTodo(req, res) {
     }
 }
 
+export async function getAllTodosByStatus(req, res) {
+    try {
+        const userId = req.params.id;
+        const isDone = req.params.isDone === 'true'; // Convert string to boolean
+
+        const todoList = await todoSchema.find({ userId: userId, isDone: isDone });
+        res.status(200).json(todoList);
+    }
+    catch (err) {
+        res.status(500).json(err)
+    }
+}
+
 export async function deleteAllCompletedTodos(req, res) {
     try {
         const userId = req.params.id;

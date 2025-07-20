@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
-import { addTodo, editTodo, deleteTodo, getAllTodo, deleteAllCompletedTodos } from '../server/controllers/todoController.js'
+import { addTodo, editTodo, deleteTodo, getAllTodo, deleteAllCompletedTodos, getAllTodosByStatus } from '../server/controllers/todoController.js'
 import { loginUser, registerUser } from './controllers/userController.js'
 
 const app = express()
@@ -19,6 +19,7 @@ app.put("/todo/:id", editTodo)
 app.delete("/todo/:id", deleteTodo)
 app.get("/todo/:id", getAllTodo)
 app.delete("/todo/deleteAllCompletedTodos/:id", deleteAllCompletedTodos)
+app.get("/todo/:id/status/:isDone", getAllTodosByStatus)
 
 app.post("/register", registerUser)
 app.post("/login", loginUser)

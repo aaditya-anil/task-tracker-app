@@ -40,7 +40,19 @@ export const deleteAllCompletedTodos = createAsyncThunk('todo/deleteAllCompleted
   catch (error) {
     console.error(error);
   }
-})
+});
+
+export const getAllTodosByStatus = createAsyncThunk('todo/getAllTodosByStatus', async ({ id, isDone }) => {
+  try {
+    const response = await axios.get(`${baseUrl}todo/${id}/status/${isDone}`);
+    return response.data;
+  }
+  catch (error) {
+    console.error(error);
+  }
+});
+
+
 
 const todoSlice = createSlice({
   name: 'todo',
@@ -62,6 +74,9 @@ const todoSlice = createSlice({
       .addCase(deleteAllCompletedTodos.fulfilled, (state, action) => {
         return state.filter((todo) => !todo.isDone);
       })
+      .addCase(getAllTodosByStatus.fulfilled, (state, action) => {
+        return action.payload;
+      });
   }
 });
 
