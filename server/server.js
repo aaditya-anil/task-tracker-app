@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
-import { addTodo, editTodo, deleteTodo, getAllTodo } from '../server/controllers/todoController.js'
+import { addTodo, editTodo, deleteTodo, getAllTodo, deleteAllCompletedTodos } from '../server/controllers/todoController.js'
 import { loginUser, registerUser } from './controllers/userController.js'
 
 const app = express()
@@ -12,12 +12,13 @@ dotenv.config()
 app.use(cors());
 app.use(express.json());
 
-app.listen(PORT, ()=> console.log("Backend Server Started: Listening on Port: " + PORT))
+app.listen(PORT, () => console.log("Backend Server Started: Listening on Port: " + PORT))
 
 app.post("/todo", addTodo)
-app.put("/todo/:id",editTodo)
-app.delete("/todo/:id",deleteTodo)
-app.get("/todo/:id",getAllTodo)
+app.put("/todo/:id", editTodo)
+app.delete("/todo/:id", deleteTodo)
+app.get("/todo/:id", getAllTodo)
+app.delete("/todo/deleteAllCompletedTodos/:id", deleteAllCompletedTodos)
 
 app.post("/register", registerUser)
 app.post("/login", loginUser)

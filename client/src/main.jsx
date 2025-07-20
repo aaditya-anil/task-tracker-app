@@ -8,13 +8,13 @@ import store from './store'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
-  {path: '/', element: <App />},
-  {path: '/login', element: <Login />},
-  {path: '/Register', element: <Register />},
+  { path: '/', element: <App /> },
+  { path: '/login', element: <Login /> },
+  { path: '/Register', element: <Register /> },
 ])
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </Provider>,
 )

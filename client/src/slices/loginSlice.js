@@ -4,11 +4,11 @@ import { use } from "react";
 
 const baseUrl = 'http://localhost:4000/';
 
-export const loginUser = createAsyncThunk('login/loginUser', async (credentials, {rejectWithValue}) => {
+export const loginUser = createAsyncThunk('login/loginUser', async (credentials, { rejectWithValue }) => {
     try {
         const response = await axios.post(baseUrl + 'login', credentials);
         return response.data;
-    } 
+    }
     catch (error) {
         return rejectWithValue(
             error.response.data
@@ -17,7 +17,7 @@ export const loginUser = createAsyncThunk('login/loginUser', async (credentials,
 });
 
 const loginSlice = createSlice({
-  name: 'login',
+    name: 'login',
     initialState: {
         token: null,
         error: "noLoggedIn",

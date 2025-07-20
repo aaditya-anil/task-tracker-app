@@ -4,7 +4,7 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:4000/';
 
 export const getAllTodos = createAsyncThunk('todo/getAllTodos', async (id) => {
-  const res = await fetch(baseUrl + 'todo/'+ id);
+  const res = await fetch(baseUrl + 'todo/' + id);
   return await res.json();
 });
 
@@ -14,23 +14,33 @@ export const addTodo = createAsyncThunk('todo/addTodo', async (data) => {
 });
 
 export const deleteTodo = createAsyncThunk('todo/deleteTodo', async (id) => {
-    try {
-      const response = await axios.delete(baseUrl + 'todo/' + id);
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
+  try {
+    const response = await axios.delete(baseUrl + 'todo/' + id);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 });
 
-export const editTodo = createAsyncThunk('todo/editTodo', async ({id,data}) => {
-    try{
-        const response = await axios.put(baseUrl + 'todo/' + id , data );
-        return response.data
-    }
-    catch (error){
-        console.error(error)
-    }
+export const editTodo = createAsyncThunk('todo/editTodo', async ({ id, data }) => {
+  try {
+    const response = await axios.put(baseUrl + 'todo/' + id, data);
+    return response.data
+  }
+  catch (error) {
+    console.error(error)
+  }
 });
+
+export const deleteAllCompletedTodos = createAsyncThunk('todo/deleteAllCompletedTodos', async (id) => {
+  try {
+    const response = await axios.delete(baseUrl + 'todo/deleteAllCompletedTodos/' + id);
+    return response.data;
+  }
+  catch (error) {
+    console.error(error);
+  }
+})
 
 const todoSlice = createSlice({
   name: 'todo',
@@ -43,11 +53,14 @@ const todoSlice = createSlice({
       .addCase(addTodo.fulfilled, (state, action) => {
         state.push(action.payload);
       })
-      .addCase(deleteTodo.fulfilled, (state,action) => {
+      .addCase(deleteTodo.fulfilled, (state, action) => {
         return state.filter((todo) => todo._id !== action.payload.id);
       })
-      .addCase(editTodo.fulfilled, (state,action) => {
+      .addCase(editTodo.fulfilled, (state, action) => {
         return state.map((todo) => todo._id === action.payload._id ? action.payload : todo);
+      })
+      .addCase(deleteAllCompletedTodos.fulfilled, (state, action) => {
+        return state.filter((todo) => !todo.isDone);
       })
   }
 });

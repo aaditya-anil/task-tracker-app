@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './Login.css' 
+import './Login.css'
 import axios from 'axios';
-import { useSelector , useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { loginUser } from '../../slices/loginSlice';
 
 const Login = () => {
@@ -31,29 +31,28 @@ const Login = () => {
   if (loginState.token) {
     localStorage.setItem('token', loginState.token);
     localStorage.setItem('userId', loginState.userId);
-    window.location.href = '/'; 
+    window.location.href = '/';
 
   }
 
   return (
     <div>
-        <form className='login-form' autoComplete='off' onSubmit={handleLogin}>
-            <h2>Login</h2>
-            <div className='form-group'>
-                <label htmlFor='email'>Email:</label>
-                <input type='email' id='email' name='email' required />
-            </div>
-            <div className='form-group'>
-                <label htmlFor='password'>Password:</label>
-                <input type='password' id='password' name='password' required />
-            </div>
-            {loginState.error && <p className='error-message'>{loginState.message}</p>}
-            <br></br>
-            <button type='submit'>Login</button>
-            <Link to='/Register'>
-            <button className='register'>Register</button>
-            </Link>
-        </form>
+      <form className='login-form' autoComplete='off' onSubmit={handleLogin}>
+        <h2>Login</h2>
+        <div className='form-group'>
+          <label htmlFor='email'>Email:</label>
+          <input type='email' id='email' name='email' required />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='password'>Password:</label>
+          <input type='password' id='password' name='password' required />
+        </div>
+        {loginState.error ? <p className='error'>{loginState.message}</p> : <p className='error'></p>}
+        <button type='submit'>Login</button>
+        <Link to='/Register'>
+          <button className='register'>Register</button>
+        </Link>
+      </form>
     </div>
   )
 }

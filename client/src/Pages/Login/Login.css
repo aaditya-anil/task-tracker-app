@@ -1,8 +1,8 @@
-*{
+* {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.login-form{
+.login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,21 +11,22 @@
     height: 100vh;
     gap: 1rem;
     max-width: 400px;
-    margin: auto;   
-    input{
-    width: 400px;
-    padding: 10px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    background-color: aliceblue;
+    margin: auto;
+
+    input {
+        width: 400px;
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        background-color: aliceblue;
     }
 
-    label{
+    label {
         font-size: 1.2rem;
         color: #333;
     }
 
-    button{
+    button {
         width: 100px;
         padding: 6px;
         border-radius: 12px;
@@ -33,26 +34,28 @@
         background-color: aliceblue;
         cursor: pointer;
 
-        
+
     }
 
-    .register{
-            background-color: #ff6a00;
-            color: white;
-        }
+    .register {
+        background-color: #ff6a00;
+        color: white;
+    }
 
-    button:hover{
+    button:hover {
         background-color: #e0e0e0;
     }
-    button:focus{
+
+    button:focus {
         outline: none;
         box-shadow: 0 0 0 2px #007bff;
     }
-    button:active{
+
+    button:active {
         background-color: #d0d0d0;
     }
 
-    .form-group{
+    .form-group {
         display: grid;
         grid-template-columns: 1fr;
         gap: 0.5rem;

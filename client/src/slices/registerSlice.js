@@ -19,7 +19,7 @@ const registerSlice = createSlice({
     initialState: {
         token: null,
         error: null,
-        message: null   
+        message: null
     },
     reducers: {},
     extraReducers: (builder) => {

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     window.location.href = '/login';
   }
 
@@ -11,7 +12,7 @@ const Navbar = () => {
     <div className='Navbar'>
       <h1>TodoList</h1>
       <Link to='/Login'>
-      <button className='Logout' onClick={handleLogout}>Logout</button>
+        <button className='Logout' onClick={handleLogout}>Logout</button>
       </Link>
     </div>
   )
