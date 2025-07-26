@@ -38,28 +38,30 @@ const Register = () => {
     return (
         <div>
             <form className='register-form' autoComplete='off' onSubmit={handleRegister}>
-                <h2>Register</h2>
-                <div className='form-group'>
-                    <label htmlFor='name'>Name:</label>
-                    <input type='text' id='name' name='name' required />
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='email'>Email:</label>
-                    <input type='email' id='email' name='email' required />
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='password'>Password:</label>
-                    <input type='password' id='password' name='password' required />
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='confirm-password'>Confirm Password:</label>
-                    <input type='password' id='confirm-password' name='confirm-password' required />
+                <div className="form-container">
+                    <h2>Create a new account</h2>
+                    <div className='form-group'>
+                        <label htmlFor='name'>Name</label>
+                        <input type='text' id='name' name='name' placeholder='Enter your name' required />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='email'>Email</label>
+                        <input type='email' id='email' name='email' placeholder='Enter your email' required />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='password'>Password</label>
+                        <input type='password' id='password' name='password' placeholder='Enter your password' required />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='confirm-password'>Confirm Password</label>
+                        <input type='password' id='confirm-password' name='confirm-password' placeholder='Enter your password again' required />
+                    </div>
                     {!passwordMatch ? <p className='error'>Passwords do not match</p> : <p className='error'></p>}
+                    <button type='submit'>Register</button>
+                    <Link to='/login'>
+                        <p className='register'>Already a user? Click here</p>
+                    </Link>
                 </div>
-                <button type='submit'>Register</button>
-                <Link to='/login'>
-                    <p>Already a user? Click here</p>
-                </Link>
             </form>
         </div>
     )

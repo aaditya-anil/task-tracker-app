@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logoImage from '../assets/logo.png'
 
 const Navbar = () => {
   const handleLogout = () => {
@@ -10,10 +11,12 @@ const Navbar = () => {
 
   return (
     <div className='Navbar'>
-      <h1>TodoList</h1>
-      <Link to='/Login'>
-        <button className='Logout' onClick={handleLogout}>Logout</button>
-      </Link>
+      <img src={logoImage} height='32px' alt='logo' />
+      <div className="logout-container">
+        <Link to='/Login'>
+          <button className='Logout' onClick={handleLogout}>Logout</button>
+        </Link>
+      </div>
     </div>
   )
 }

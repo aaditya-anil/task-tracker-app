@@ -7,6 +7,7 @@ export async function addTodo(req, res) {
             userId: req.body.userId,
             taskName: req.body.taskName,
             isDone: req.body.isDone,
+            description: req.body.description || ''
         })
         const savedTodo = await newTodo.save()
         res.status(200).json(savedTodo)

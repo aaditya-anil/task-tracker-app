@@ -4,6 +4,7 @@ import './Login.css'
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser } from '../../slices/loginSlice';
+import logoImage from '../../assets/logo.png';
 
 const Login = () => {
   const loginState = useSelector((state) => state.login);
@@ -38,20 +39,22 @@ const Login = () => {
   return (
     <div>
       <form className='login-form' autoComplete='off' onSubmit={handleLogin}>
-        <h2>Login</h2>
-        <div className='form-group'>
-          <label htmlFor='email'>Email:</label>
-          <input type='email' id='email' name='email' required />
+        <img src={logoImage} height='32px' alt='login-icon' />
+        <div className="form-container">
+          <div className='form-group'>
+            <label htmlFor='email'>Email</label>
+            <input type='email' id='email' name='email' placeholder='Enter your email' required />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='password'>Password</label>
+            <input type='password' id='password' name='password' placeholder='Enter your password' required />
+          </div>
+          {loginState.error ? <p className='error'>{loginState.message}</p> : <p className='error'></p>}
+          <button type='submit'>Login</button>
+          <Link to='/Register'>
+            <p className='register'>Not a user yet? Click to Register</p>
+          </Link>
         </div>
-        <div className='form-group'>
-          <label htmlFor='password'>Password:</label>
-          <input type='password' id='password' name='password' required />
-        </div>
-        {loginState.error ? <p className='error'>{loginState.message}</p> : <p className='error'></p>}
-        <button type='submit'>Login</button>
-        <Link to='/Register'>
-          <button className='register'>Register</button>
-        </Link>
       </form>
     </div>
   )

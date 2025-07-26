@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     padding: 0px;
+    font-family: poppins, sans-serif;
+    margin: 0px;
 }
 
 .page {
@@ -13,7 +17,8 @@
 .error {
     color: red;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     display: flex;
     justify-content: center;
     margin-bottom: 0px;
@@ -22,24 +27,30 @@
 }
 
 .completed {
-    color: grey;
-    text-decoration: line-through;
+    opacity: 0.5;
+    /* Fades entire task */
+    transition: opacity 0.3s ease-in-out;
+    color: gray;
+
+    h1 {
+        text-decoration: line-through;
+    }
+
+    p {
+        text-decoration: line-through;
+    }
 }
 
 .ind-list {
-    display: grid;
+    display: flex;
     grid-template-columns: 1rem 35rem 2rem 2rem;
     gap: 1rem;
     justify-content: space-between;
     margin-top: 6px;
     margin-bottom: 6px;
-
-
 }
 
-.checkbox {
-    color: #007bff;
-}
+
 
 ul {
     list-style-type: none;
@@ -50,58 +61,46 @@ li {
     align-self: center;
 }
 
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-button {
-    text-decoration: none;
-    border-width: 1px;
-    padding: 6px 6px 6px 6px;
-    border-radius: 12px;
-    background-color: aliceblue;
-}
-
 input {
     width: 16px;
 }
 
 .Navbar {
     width: 100%;
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
     gap: 20px;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
 
-    h1 {
-        font-size: 1.5rem;
-        color: #343a40;
+    img {
         padding-left: 20px;
     }
 
+    .logo {
+        font-size: 24px;
+        font-weight: 600;
+        color: #343a40;
+    }
+
     button {
-        padding: 6px 12px;
-        border-radius: 8px;
-        border: none;
-        background-color: #91969c;
-        color: white;
-        cursor: pointer;
+        padding: 12px 20px;
+        background-color: #5b6167;
+        border-radius: 20px;
+    }
+
+    .logout-container {
+        padding-right: 12px;
     }
 }
 
 .todo-list {
     width: 100%;
-    max-width: 800px;
+
     margin: 0 auto;
-    margin-top: 20px;
-    padding: 20px;
+
     background-color: #fff;
     border-radius: 8px;
 
@@ -109,17 +108,7 @@ input {
         padding: 0;
         margin: 0;
 
-        button {
-            margin-left: 10px;
-            padding: 6px 12px;
-            border-radius: 8px;
-            border: none;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            width: 72px;
-            text-align: center;
-        }
+
     }
 
     li {
@@ -129,50 +118,157 @@ input {
         padding: 10px;
         border-bottom: 1px solid #e9ecef;
     }
+}
+
+.todo-details {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+
+    .todo-title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .todo-description {
+        font-size: 14px;
+        color: #6c757d;
+        height: 4rem;
+    }
 
     .buttons {
         display: flex;
+        align-items: end;
+        justify-content: end;
         gap: 10px;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-top: 30px;
-        margin-bottom: 10px;
+        margin: 12px;
 
         button {
-            padding: 6px 12px;
-            border-radius: 8px;
+            width: fit-content;
+            border-radius: 16px;
             border: none;
-            background-color: #007bff;
-            color: white;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+    }
+
+}
+
+.todo-details:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+
+.btn-complete {
+    background-color: #3a8049;
+}
+
+.btn-incomplete {
+    background-color: #d07d86;
+}
+
+select {
+    width: 20%;
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+    color: #495057;
+}
+
+.actionbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+
+    .buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-right: 30px;
+
+
+        button {
+            width: fit-content;
+            border-radius: 16px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+    }
+}
+
+.todo-li {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 20px;
+
+    justify-content: start;
+}
+
+.create-todo-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    height: 100vh;
+    padding: 20px;
+
+    textarea {
+        width: 422px;
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        resize: none;
+    }
+
+    .create-todo-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-radius: 12px;
+    }
+
+    button {
+        margin-top: 12px;
+        width: 422px;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+
+        p {
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            justify-self: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #0056b3;
-        }
 
-        button:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px #007bff;
-        }
-
-        button:active {
-            background-color: #004085;
-        }
-
-        button.delete {
-            background-color: #dc3545;
-        }
-
-        button.delete:hover {
-            background-color: #c82333;
-        }
-
-        button.delete:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px #dc3545;
-        }
     }
 }
